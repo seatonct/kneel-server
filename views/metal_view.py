@@ -26,3 +26,12 @@ class MetalsView():
             serialized_metals = json.dumps(metals)
 
         return handler.response(serialized_metals, status.HTTP_200_SUCCESS)
+
+    def create(self, handler, metal_data):
+        return handler.response("This action cannot be completed because it is unsupported.", status.HTTP_405_UNSUPPORTED_METHOD)
+
+    def delete(self, handler, pk):
+        return handler.response("This action cannot be completed because it is unsupported.", status.HTTP_405_UNSUPPORTED_METHOD)
+
+    def update(self, handler, metal_data, pk):
+        return handler.response("This action cannot be completed because it is unsupported.", status.HTTP_405_UNSUPPORTED_METHOD)
