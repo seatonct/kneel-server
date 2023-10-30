@@ -20,7 +20,7 @@ class MetalsView():
 
         else:
             query_results = db_get_all(
-                "SELECT m.id, m.metal, m.price FROM Metals m"
+                "SELECT id, metal, price FROM Metals"
             )
             metals = [dict(row) for row in query_results]
             serialized_metals = json.dumps(metals)
