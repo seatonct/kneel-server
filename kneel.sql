@@ -32,3 +32,12 @@ CREATE TABLE `Orders`
 
 ALTER TABLE Orders 
 ADD `timestamp` DATETIME DEFAULT CURRENT_DATE;
+
+INSERT INTO `Metals` VALUES (null, "Sterling Silver", 12.42);
+INSERT INTO `Metals` VALUES (null, "14K Gold", 736.4);
+INSERT INTO `Metals` VALUES (null, "24K Gold", 1258.9);
+INSERT INTO `Metals` VALUES (null, "Platinum", 795.45);
+INSERT INTO `Metals` VALUES (null, "Palladium", 1241);
+
+
+SELECT id, metal FROM Metals;
