@@ -45,4 +45,8 @@ INSERT INTO `Sizes` VALUES (null, 1, 1470);
 INSERT INTO `Sizes` VALUES (null, 1.5, 1997);
 INSERT INTO `Sizes` VALUES (null, 2, 3638);
 
-SELECT * FROM Sizes;
+INSERT INTO `Styles` VALUES (null, "Classic", 500);
+INSERT INTO `Styles` VALUES (null, "Modern", 710);
+INSERT INTO `Styles` VALUES (null, "Vintage", 965);
+
+SELECT * FROM Styles;
