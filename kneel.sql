@@ -39,5 +39,10 @@ INSERT INTO `Metals` VALUES (null, "24K Gold", 1258.9);
 INSERT INTO `Metals` VALUES (null, "Platinum", 795.45);
 INSERT INTO `Metals` VALUES (null, "Palladium", 1241);
 
+INSERT INTO `Sizes` VALUES (null, 0.5, 405);
+INSERT INTO `Sizes` VALUES (null, 0.75, 782);
+INSERT INTO `Sizes` VALUES (null, 1, 1470);
+INSERT INTO `Sizes` VALUES (null, 1.5, 1997);
+INSERT INTO `Sizes` VALUES (null, 2, 3638);
 
-SELECT id, metal FROM Metals;
+SELECT * FROM Sizes;

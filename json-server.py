@@ -4,7 +4,7 @@ from nss_handler import HandleRequests, status
 
 
 # Add your imports below this line
-from views import MetalsView
+from views import MetalsView, SizesView
 
 
 class JSONServer(HandleRequests):
@@ -63,7 +63,7 @@ class JSONServer(HandleRequests):
         try:
             routes = {
                 "metals": MetalsView,
-                # "sizes": SizesView,
+                "sizes": SizesView,
                 # "styles": StylesView,
                 # "orders": OrdersView
             }
