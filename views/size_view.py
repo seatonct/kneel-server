@@ -22,8 +22,8 @@ class SizesView():
             query_results = db_get_all(
                 "SELECT id, carets, price FROM Sizes"
             )
-            metals = [dict(row) for row in query_results]
-            serialized_sizes = json.dumps(metals)
+            sizes = [dict(row) for row in query_results]
+            serialized_sizes = json.dumps(sizes)
 
         return handler.response(serialized_sizes, status.HTTP_200_SUCCESS)
 
