@@ -49,4 +49,12 @@ INSERT INTO `Styles` VALUES (null, "Classic", 500);
 INSERT INTO `Styles` VALUES (null, "Modern", 710);
 INSERT INTO `Styles` VALUES (null, "Vintage", 965);
 
-SELECT * FROM Styles;
+INSERT INTO `Orders` (metal_id, size_id, style_id) VALUES (2, 2, 2);
+INSERT INTO `Orders` (metal_id, size_id, style_id) VALUES (3, 5, 2);
+INSERT INTO `Orders` (metal_id, size_id, style_id) VALUES (4, 1, 3);
+INSERT INTO `Orders` (metal_id, size_id, style_id) VALUES (5, 3, 1);
+
+
+
+
+SELECT * FROM Orders;
