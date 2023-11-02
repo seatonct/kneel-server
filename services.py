@@ -63,3 +63,48 @@ def expand_order(query_params, query_results):
         expanded_order["style"] = style
 
     return expanded_order
+
+
+def expand_all_orders(query_params, query_results):
+    """Expands each order in the list of all orders according to the given query parameters"""
+    all_expanded_orders = []
+
+    for order in query_results:
+        # Assign the contents of the "order" object to a variable named "expanded order"
+        expanded_order = {
+            "id": order["id"],
+            "metal_id": order["metal_id"],
+            "size_id": order["size_id"],
+            "style_id": order["style_id"],
+            "timestamp": order["timestamp"]
+        }
+
+        # Create empty objects for metal, size, and style.
+        metal = {}
+        size = {}
+        style = {}
+
+        # If ["query_params"] contains "metal", add metal keys/values to "metal" object.
+        if "metal" in query_params["_expand"]:
+            metal["id"] = order["metalId"]
+            metal["metal"] = order["metal"]
+            metal["price"] = order["metalPrice"]
+            expanded_order["metal"] = metal
+
+        # If ["query_params"] contains "size", add metal keys/values to "size" object.
+        if "size" in query_params["_expand"]:
+            size["id"] = order["sizeId"]
+            size["carets"] = order["carets"]
+            size["price"] = order["sizePrice"]
+            expanded_order["size"] = size
+
+        # If ["query_params"] contains "style", add metal keys/values to "style" object.
+        if "style" in query_params["_expand"]:
+            style["id"] = order["styleId"]
+            style["style"] = order["style"]
+            style["price"] = order["stylePrice"]
+            expanded_order["style"] = style
+
+        all_expanded_orders.append(expanded_order)
+
+    return all_expanded_orders

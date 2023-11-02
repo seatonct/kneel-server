@@ -1,7 +1,7 @@
 import json
 from nss_handler import status
 from repository import db_get_single, db_get_all, db_delete, db_create
-from services import build_query, expand_order
+from services import build_query, expand_order, expand_all_orders
 
 
 class OrdersView():
@@ -40,8 +40,9 @@ class OrdersView():
             if "_expand" in url["query_params"]:
                 sql = build_query(url)
                 query_results = db_get_all(sql)
-                orders = [expand_order(url["query_params"], query_results)
-                          for row in query_results]
+                orders = expand_all_orders(
+                    url["query_params"], query_results)
+
             else:
                 sql = "SELECT id, metal_id, size_id, style_id, timestamp FROM Orders"
                 query_results = db_get_all(sql)
