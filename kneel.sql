@@ -57,4 +57,8 @@ INSERT INTO `Orders` (metal_id, size_id, style_id) VALUES (5, 3, 1);
 
 
 
-SELECT * FROM Orders;
+SELECT * FROM Orders
+    JOIN Metals
+        ON Orders.metal_id = Metals.id
+    JOIN Sizes
+        ON Orders.size_id = Sizes.id;

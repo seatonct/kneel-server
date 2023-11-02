@@ -1,7 +1,7 @@
 import json
 from nss_handler import status
-from repository import db_get_single, db_get_all, db_delete, db_update, db_create
-# from services import expand_ship
+from repository import db_get_single, db_get_all, db_delete, db_create
+from services import build_query, expand_order, expand_all_orders
 
 
 class OrdersView():
@@ -26,16 +26,10 @@ class OrdersView():
     def get(self, handler, url):
         if url["pk"] != 0:
             if "_expand" in url["query_params"]:
-                pass
-                # sql = """
-                # SELECT s.id, s.name, s.hauler_id, h.id haulerId, h.name haulerName, h.dock_id
-                # FROM Ship s
-                # JOIN Hauler h
-                #     ON h.id = s.hauler_id
-                # WHERE s.id = ?
-                # """
-                # query_results = db_get_single(sql, url["pk"])
-                # ship = expand_ship(query_results)
+                sql = build_query(url)
+                query_results = db_get_single(sql, url["pk"])
+
+                order = expand_order(url["query_params"], query_results)
             else:
                 sql = "SELECT id, metal_id, size_id, style_id, timestamp FROM Orders WHERE id = ?"
                 order = db_get_single(sql, url["pk"])
@@ -44,16 +38,11 @@ class OrdersView():
             return handler.response(serialized_order, status.HTTP_200_SUCCESS)
         else:
             if "_expand" in url["query_params"]:
-                pass
-                # sql = """
-                # SELECT s.id, s.name, s.hauler_id, h.id haulerId, h.name haulerName, h.dock_id
-                # FROM Ship s
-                # JOIN Hauler h
-                #     ON h.id = s.hauler_id
-                # ORDER BY s.id
-                # """
-                # query_results = db_get_all(sql)
-                # ships = [expand_ship(row) for row in query_results]
+                sql = build_query(url)
+                query_results = db_get_all(sql)
+                orders = expand_all_orders(
+                    url["query_params"], query_results)
+
             else:
                 sql = "SELECT id, metal_id, size_id, style_id, timestamp FROM Orders"
                 query_results = db_get_all(sql)
